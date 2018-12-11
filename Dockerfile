@@ -1,7 +1,10 @@
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
-RUN npm install
-ADD src /usr/usr/app/src
-ADD public /usr/src/app/public
-RUN npm build
-CMD["npm","start"]
+
+ FROM mhart/alpine-node:latest
+ 
+ COPY . /app  	
+ WORKDIR /app 	
+ 
+ RUN npm install 
+ EXPOSE 9091
+ ENTRYPOINT ["node_modules/.bin/babel-node","index.js]
+ 
